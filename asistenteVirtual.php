@@ -1,0 +1,116 @@
+?>
+codesyntax lang=»php» AddType application/x-httpd-php .php .htm .html AddHandler x-httpd-php .php .htm .html /codesyntax
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente Virtual</title>
+   
+    <script>
+        var cadena, cod, respuesta;
+        var manguera = RegExp("(MANGUERA|MANGUERAS)");
+        var aceite = RegExp("(ACEITE)");
+        var presion = RegExp("(LIBRA|LIBRAS)");
+        var garantia = RegExp("(GARANTÍA|GARANTIA)");
+        var hacer = RegExp("(HACER)");
+        var edad = /AÑOS/;
+
+        function evaluarEdad() {
+            cadena = document.getElementById("txtPregunta").value;
+            cadena = cadena.toUpperCase();
+
+            document.getElementById("resultado1").value = manguera.test(cadena);
+            document.getElementById("resultado2").value = aceite.test(cadena);
+            document.getElementById("resultado3").value = presion.test(cadena);
+
+            if (manguera.test(cadena) && aceite.test(cadena)) {
+                cod = 1;
+            }
+
+            if (manguera.test(cadena) && presion.test(cadena)) {
+                cod = 2;
+            }
+
+            if (manguera.test(cadena) && garantia.test(cadena)) {
+                cod = 3;
+            }
+
+            if (manguera.test(cadena) && hacer.test(cadena)) {
+                cod = 4;
+            }
+
+            responder();
+
+        }
+
+        function responder() {
+
+            switch (cod) {
+                case 1:
+                    mensaje = "La manguera C5C ó LOLA, dependiendo de la presión."
+
+                    break;
+                case 2:
+                    mensaje = "350 PSI o menos."
+
+                    break;
+                case 3:
+                    mensaje = "Sí, mientras se usen bajo los estándares recomendados."
+
+                    break;
+                case 4:
+                    mensaje = "Aproximadamente de 15 a 20 minutos."
+
+                    break;
+                default:
+            }
+            document.getElementById("respuesta").innerHTML = mensaje;
+
+        }
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/default.css">
+</head>
+<body>
+    <body background="./Resources/icono2.jpg">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.html">MHINSA</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="index.html">Home</a>
+                <a class="nav-item nav-link" href="#">Tipos de Mangueras</a>
+                <a class="nav-item nav-link" href="#">Tipos de Conexiones</a>
+                <a class="nav-item nav-link" href="#">PIJA</a>
+                <a class="nav-item nav-link" href="asistentevirtual.html">Asistente Virtual</a>
+              </div>
+            </div>
+          </nav>
+    
+        <main class="container">
+            <header>
+                <h1>Asistente Virtual</h1>
+            </header>
+            <input type="text" id="txtPregunta" size="100">
+            <input type="button" value="Submit" onclick="evaluarEdad()">
+    
+            <p id="resultado1">
+            </p>
+            <p id="resultado2">
+            </p>
+            <p id="resultado3">
+            </p>
+            <p id="respuesta">
+            </p>
+    
+            <footer>MHINSA S.A. de C.V.</footer>
+        </main>
+</body>
+</html>
+<?php
