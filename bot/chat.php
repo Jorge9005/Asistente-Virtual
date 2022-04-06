@@ -23,7 +23,7 @@ $questions = [
     "tubos" => "Los tubos ---.",
     
     //info
-    "   " => "La empresa MHINSA ---.",
+    "información importante a considerar?" => "La empresa MHINSA ---.",
        
     //name
     "como te llamas?" =>"Soy MHINSABot y estoy para servirte",
